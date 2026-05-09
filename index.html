@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kerupuk Bawang Pak Fatkhur | Pasar Kebonagong Pasuruan</title>
+  <meta name="description"
+    content="Kerupuk bawang renyah dan gurih di Pasar Kebonagong Kota Pasuruan. Beli porsian mulai Rp5.000 atau rentengan. Pesan via WhatsApp!" />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ['Playfair Display', 'serif'], body: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: { 50: '#fff9ed', 100: '#fff1d4', 200: '#ffe0a8', 300: '#ffca70', 400: '#ffab36', 500: '#ff9410', 600: '#f07806', 700: '#c85a07', 800: '#9e460e', 900: '#81390f' },
+            dark: { 800: '#1a1410', 900: '#0f0c08' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-dark-900 text-white font-body overflow-x-hidden">
+  <div id="app">
+    <!-- NAVBAR -->
+    <nav
+      :class="['fixed top-0 w-full z-50 transition-all duration-500', scrolled ? 'bg-dark-900/90 backdrop-blur-xl shadow-2xl shadow-brand-500/5 py-2' : 'bg-transparent py-5']">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-3 group">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center text-lg font-bold shadow-lg shadow-brand-500/30 group-hover:scale-110 transition-transform">
+            🍘</div>
+          <span class="font-display text-xl tracking-tight">Kerupuk<span class="text-brand-400">Bawang</span></span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a v-for="link in navLinks" :key="link.href" :href="link.href"
+            class="text-sm text-gray-300 hover:text-brand-400 transition-colors relative group">
+            {{ link.label }}
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-400 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="https://wa.me/6289635580992?text=Halo%20saya%20mau%20pesan%20kerupuk" target="_blank"
+            class="px-5 py-2.5 bg-gradient-to-r from-brand-500 to-brand-600 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all duration-300">
+            <i class="fab fa-whatsapp mr-1.5"></i> Pesan Sekarang
+          </a>
+        </div>
+        <button @click="mobileOpen = !mobileOpen" class="md:hidden text-2xl text-brand-400"><i
+            :class="mobileOpen ? 'fas fa-times' : 'fas fa-bars'"></i></button>
+      </div>
+      <!-- Mobile Menu -->
+      <transition name="slide">
+        <div v-if="mobileOpen" class="md:hidden bg-dark-900/95 backdrop-blur-xl border-t border-white/5 px-6 pb-6 pt-4">
+          <a v-for="link in navLinks" :key="link.href" :href="link.href" @click="mobileOpen=false"
+            class="block py-3 text-gray-300 hover:text-brand-400 transition-colors border-b border-white/5">{{
+            link.label }}</a>
+          <a href="https://wa.me/6289635580992?text=Halo%20saya%20mau%20pesan%20kerupuk" target="_blank"
+            class="mt-4 block text-center px-5 py-3 bg-gradient-to-r from-brand-500 to-brand-600 rounded-full font-semibold">
+            <i class="fab fa-whatsapp mr-1.5"></i> Pesan via WhatsApp
+          </a>
+        </div>
+      </transition>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+      <div class="hero-bg-glow"></div>
+      <div class="absolute inset-0 z-0">
+        <div class="floating-shapes">
+          <div v-for="n in 6" :key="n" :class="'shape shape-'+n"></div>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 pt-24 pb-16">
+        <div class="reveal-left text-center lg:text-left">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold mb-6 tracking-widest uppercase mx-auto lg:mx-0">
+            <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span> UMKM Pasar Kebonagong
+          </div>
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6">
+            Kerupuk Bawang <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-300">Renyah & Gurih</span>
+          </h1>
+          <p class="text-gray-400 text-lg sm:text-xl max-w-lg mb-8 leading-relaxed">
+            Dibuat dengan resep turun-temurun. Tersedia porsian mulai <strong class="text-brand-300">Rp5.000</strong>
+            dan rentengan. Langsung dari Pasar Kebonagong, depan Senkuko, Kota Pasuruan.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+            <a href="https://wa.me/6289635580992?text=Halo%20saya%20mau%20pesan%20kerupuk" target="_blank"
+              class="group px-7 py-3.5 bg-gradient-to-r from-brand-500 to-brand-600 rounded-full font-semibold shadow-xl shadow-brand-500/30 hover:shadow-brand-500/50 hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
+              <i class="fab fa-whatsapp text-lg"></i> Pesan via WA
+              <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#produk"
+              class="px-7 py-3.5 border border-white/10 rounded-full font-semibold hover:bg-white/5 hover:border-brand-400/30 transition-all duration-300">Lihat
+              Produk</a>
+          </div>
+          <div class="mt-10 flex items-center gap-6 text-sm text-gray-500 justify-center lg:justify-start">
+            <div class="flex items-center gap-2"><i class="fas fa-star text-brand-400"></i><span>Resep Turun
+                Temurun</span></div>
+            <div class="flex items-center gap-2"><i class="fas fa-fire text-brand-400"></i><span>Selalu Fresh</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-right flex justify-center">
+          <div class="hero-image-wrapper">
+            <div class="hero-3d-card">
+              <img src="assets/kerupuk_hero.png" alt="Kerupuk Bawang Renyah" class="w-full rounded-2xl" />
+              <div class="hero-card-shine"></div>
+            </div>
+            <div class="hero-floating-badge top-4 -left-4 sm:top-8 sm:-left-8">
+              <span class="text-2xl">🔥</span>
+              <div><span class="text-xs text-gray-400">Harga</span><br /><strong class="text-brand-400">Rp5.000</strong>
+              </div>
+            </div>
+            <div class="hero-floating-badge bottom-4 -right-4 sm:bottom-8 sm:-right-8" style="animation-delay:1s">
+              <span class="text-2xl">⭐</span>
+              <div><span class="text-xs text-gray-400">Rating</span><br /><strong class="text-brand-400">4.9/5</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+        <a href="#tentang" class="text-brand-400/60 text-2xl"><i class="fas fa-chevron-down"></i></a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="tentang" class="py-24 relative">
+      <div class="section-glow-left"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal-left">
+            <div class="about-image-grid">
+              <div class="about-img-main card-3d">
+                <img src="assets/kerupuk_hero.png" alt="Tentang Kami" class="rounded-2xl w-full h-full object-cover" />
+              </div>
+              <div class="about-stats-card card-3d">
+                <div class="text-center">
+                  <div class="text-3xl font-display text-brand-400 counter" data-target="1">0</div>
+                  <div class="text-xs text-gray-400 mt-1">Tahun Pengalaman</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-3xl font-display text-brand-400 counter" data-target="500">0</div>
+                  <div class="text-xs text-gray-400 mt-1">Pelanggan Puas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal-right">
+            <span class="text-brand-400 text-sm font-semibold tracking-widest uppercase">Tentang Kami</span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl mt-3 mb-6 leading-tight">Cerita di Balik <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-300">Kerupuk Kami</span>
+            </h2>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Berawal dari usaha kecil-kecilan, kami telah menjual kerupuk bawang di <strong class="text-white">Pasar
+                Kebonagong, Kota Pasuruan</strong> (tepat di depan Senkuko) selama bertahun-tahun. Setiap kerupuk kami
+              dibuat dengan bawang pilihan dan digoreng hingga renyah sempurna.
+            </p>
+            <p class="text-gray-400 leading-relaxed mb-8">
+              Kami percaya rasa terbaik datang dari bahan terbaik dan cinta dalam setiap proses pembuatan. Kerupuk kami
+              cocok sebagai lauk makan, camilan, atau oleh-oleh khas Pasuruan.
+            </p>
+            <div class="grid grid-cols-2 gap-4">
+              <div v-for="item in features" :key="item.icon"
+                class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/5 hover:border-brand-500/20 hover:bg-brand-500/5 transition-all duration-300">
+                <i :class="item.icon + ' text-brand-400 mt-0.5'"></i>
+                <div>
+                  <div class="text-sm font-semibold">{{ item.title }}</div>
+                  <div class="text-xs text-gray-500 mt-0.5">{{ item.desc }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="produk" class="py-24 relative">
+      <div class="section-glow-right"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-16 reveal-up">
+          <span class="text-brand-400 text-sm font-semibold tracking-widest uppercase">Produk Kami</span>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl mt-3 mb-4">Pilihan <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-300">Kerupuk Bawang</span>
+          </h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">Tersedia dalam berbagai pilihan sesuai kebutuhan Anda. Beli satuan
+            atau grosir!</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div v-for="(product, i) in products" :key="i" class="reveal-up product-card group"
+            :style="{animationDelay: i*0.15+'s'}">
+            <div
+              class="relative overflow-hidden rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/[0.06] hover:border-brand-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-500/10">
+              <div class="relative h-56 overflow-hidden">
+                <img :src="product.img" :alt="product.name"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+                <div v-if="product.badge"
+                  class="absolute top-4 right-4 px-3 py-1 rounded-full bg-brand-500 text-xs font-bold shadow-lg">{{
+                  product.badge }}</div>
+              </div>
+              <div class="p-6">
+                <h3 class="font-display text-xl mb-2">{{ product.name }}</h3>
+                <p class="text-gray-400 text-sm mb-4 leading-relaxed">{{ product.desc }}</p>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-brand-400 font-display text-2xl">{{ product.price }}</span>
+                    <span class="text-gray-500 text-xs ml-1">{{ product.unit }}</span>
+                  </div>
+                  <a :href="'https://wa.me/6289635580992?text=Halo%20saya%20mau%20pesan%20'+encodeURIComponent(product.name)"
+                    target="_blank"
+                    class="px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-sm font-semibold hover:bg-brand-500 hover:text-white transition-all duration-300">
+                    <i class="fab fa-whatsapp mr-1"></i> Pesan
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimoni" class="py-24 relative">
+      <div class="section-glow-left"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-16 reveal-up">
+          <span class="text-brand-400 text-sm font-semibold tracking-widest uppercase">Testimoni</span>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl mt-3 mb-4">Kata Mereka Tentang <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-300">Kerupuk Kami</span>
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div v-for="(t, i) in testimonials" :key="i" class="reveal-up" :style="{animationDelay: i*0.15+'s'}">
+            <div
+              class="h-full p-6 rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/[0.06] hover:border-brand-500/20 transition-all duration-500 hover:-translate-y-1 relative">
+              <div class="absolute -top-3 left-6 text-4xl text-brand-500/20 font-display">"</div>
+              <div class="flex items-center gap-1 mb-4">
+                <i v-for="s in 5" :key="s" class="fas fa-star text-brand-400 text-xs"></i>
+              </div>
+              <p class="text-gray-300 text-sm leading-relaxed mb-6 italic">{{ t.text }}</p>
+              <div class="flex items-center gap-3 mt-auto">
+                <div
+                  class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center text-sm font-bold">
+                  {{ t.initials }}</div>
+                <div>
+                  <div class="text-sm font-semibold">{{ t.name }}</div>
+                  <div class="text-xs text-gray-500">{{ t.role }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="lokasi" class="py-24 relative">
+      <div class="section-glow-right"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="reveal-left">
+            <span class="text-brand-400 text-sm font-semibold tracking-widest uppercase">Lokasi Kami</span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl mt-3 mb-6 leading-tight">Temukan Kami di <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-300">Pasar
+                Kebonagong</span></h2>
+            <p class="text-gray-400 leading-relaxed mb-8">Kami berlokasi di <strong class="text-white">Pasar Kebonagong,
+                Kota Pasuruan</strong>, tepat di depan Senkuko. Mudah ditemukan dan buka setiap setiap hari</p>
+            <div class="space-y-4">
+              <div v-for="info in locationInfo" :key="info.icon"
+                class="flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center flex-shrink-0">
+                  <i :class="info.icon + ' text-brand-400'"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold">{{ info.title }}</div>
+                  <div class="text-xs text-gray-400 mt-0.5">{{ info.desc }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal-right">
+            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-500/5 card-3d">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.123456789!2d112.9!3d-7.645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e1234567890%3A0xabcdef!2sPasar%20Kebonagung%2C%20Pasuruan!5e0!3m2!1sid!2sid!4v1234567890"
+                width="100%" height="400" style="border:0;" allowfullscreen loading="lazy" class="w-full"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 relative">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 reveal-up">
+        <div class="relative rounded-3xl overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-brand-600 to-brand-500"></div>
+          <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50">
+          </div>
+          <div class="relative z-10 p-10 sm:p-16 text-center">
+            <div class="text-5xl mb-4">🍘</div>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl mb-4 text-white">Mau Pesan Kerupuk?</h2>
+            <p class="text-white/80 text-lg max-w-lg mx-auto mb-8">Hubungi kami langsung via WhatsApp untuk pemesanan.
+              Bisa porsi-an maupun rentengan!</p>
+            <a href="https://wa.me/6289635580992?text=Halo%20saya%20mau%20pesan%20kerupuk%20bawang" target="_blank"
+              class="inline-flex items-center gap-3 px-8 py-4 bg-white text-brand-600 rounded-full font-bold text-lg shadow-2xl hover:-translate-y-1 hover:shadow-white/30 transition-all duration-300">
+              <i class="fab fa-whatsapp text-2xl"></i> Chat WhatsApp Sekarang
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid md:grid-cols-3 gap-8 items-center">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center text-lg font-bold shadow-lg shadow-brand-500/30">
+              🍘</div>
+            <span class="font-display text-lg">Kerupuk<span class="text-brand-400">Bawang</span></span>
+          </div>
+          <p class="text-gray-500 text-sm text-center">© 2026 Kerupuk Bawang Pasar Kebonagong Pak Fatkhur. All rights
+            reserved.</p>
+          <div class="flex justify-end gap-4">
+            <a href="https://wa.me/6289635580992" target="_blank"
+              class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-400 hover:border-brand-400/30 transition-all"><i
+                class="fab fa-whatsapp"></i></a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-400 hover:border-brand-400/30 transition-all"><i
+                class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
