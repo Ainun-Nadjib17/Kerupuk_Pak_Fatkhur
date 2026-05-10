@@ -32,7 +32,7 @@ createApp({
       {
         name: 'Kerupuk Rentengan',
         desc: 'Satu renteng berisi beberapa bungkus kerupuk bawang. Pas untuk stok di rumah atau dijual lagi!',
-        price: 'Rp25.000',
+        price: 'Rp5.000',
         unit: '/ renteng',
         img: 'assets/kerupuk_rentengan.png',
         badge: 'Hemat',
@@ -40,7 +40,7 @@ createApp({
       {
         name: 'Paket Oleh-Oleh',
         desc: 'Paket spesial untuk oleh-oleh. Dikemas rapi dan siap dibawa pulang sebagai buah tangan khas Pasuruan.',
-        price: 'Rp50.000',
+        price: 'Rp5.000',
         unit: '/ paket',
         img: 'assets/kerupuk_hero.png',
         badge: null,
